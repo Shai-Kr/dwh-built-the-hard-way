@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/26/2018 10:17:22 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SRV-BI"
+  DTS:CreatorName="MATAV\Sensebi1"
+  DTS:DTSID="{21EA582A-883A-461C-892F-A97D6A9CA241}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1037"
+  DTS:ObjectName="Fact_LastSalaryUpdate"
+  DTS:PackageType="5"
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{008669F6-8413-4EB9-9A69-C850E1293951}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BF18B4C4-9D79-49E5-AA78-2D1E85C93792}"
+      DTS:ObjectName="MatavDW">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source=SRV-BI;User ID=Sensebi;Password=sense86;Initial Catalog=MatavDW;Provider=SQLNCLI11.1;Auto Translate=False;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;User ID=Sensebi;Initial Catalog=MatavDW;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/wFfCbi8+UaOcJplD3zDyAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADdsCegxbeSvdrPECC2FEJ9AAAAAASAAACgAAAAEAAAAPPaj0DsmL7YjIxftb0qkc4QAAAAY46gwEK1OBfc9ZJnwFSJQxQAAABjql8p6WJdEl7rxj2ZOBeYgb2f4w</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavMRR]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{55A3ED40-42A6-4BC9-A63E-1E1ED9C8617E}"
+      DTS:ObjectName="MatavMRR">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source=SRV-BI;User ID=Sensebi;Password=sense86;Initial Catalog=MatavMRR;Provider=SQLNCLI11.1;Auto Translate=False;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;User ID=Sensebi;Initial Catalog=MatavMRR;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/wFfCbi8+UaOcJplD3zDyAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACV5DyYC6+5oP10wfGyxTZSAAAAAASAAACgAAAAEAAAAOUq4p+vrWQprJF1yXr7lkUQAAAA41db0asYJkWD8eDCnPANoxQAAACpui4C3vr2ggduozqe8hqnsBgQNg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavOperational]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E03AB59C-25BC-4DA5-9D58-DA802D8EBB47}"
+      DTS:ObjectName="MatavOperational">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;Initial Catalog=MatavOperational;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{887A7FFB-AB62-4B19-B58E-3F667E553F34}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DW">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DW\Delete DW Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DEE5AFD3-1702-4834-93CB-92027BCA7315}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete DW Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BF18B4C4-9D79-49E5-AA78-2D1E85C93792}"
+              SQLTask:SqlStatementSource="DELETE DW&#xA;FROM [MatavMRR].[dbo].[STG_Fact_LastSalaryUpdate] AS STG&#xA;INNER JOIN [MatavDW].[dbo].[DW_Fact_LastSalaryUpdate] AS DW&#xA;ON  DW.BranchCode=STG.BranchCode AND DW.MonthSalary=STG.MonthSalary" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DW\DW_Fact_LastSalaryUpdate"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{5AF3B9A7-6408-4B20-8D42-97D9470DEBC4}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DW_Fact_LastSalaryUpdate"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DW_Fact_LastSalaryUpdate"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DW_Fact_LastSalaryUpdate]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavDW]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].Columns[LastToSalaryUpdateDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="LastToSalaryUpdateDate"
+                          externalMetadataColumnId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[LastToSalaryUpdateDate]"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[LastToSalaryUpdateDate]" />
+                        <inputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].Columns[MonthSalary]"
+                          cachedDataType="i4"
+                          cachedName="MonthSalary"
+                          externalMetadataColumnId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[MonthSalary]"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[MonthSalary]" />
+                        <inputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].Columns[DW_UploadDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DW_UploadDate"
+                          externalMetadataColumnId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[DW_UploadDate]" />
+                        <inputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].Columns[BranchCode]"
+                          cachedDataType="i4"
+                          cachedName="BranchCode"
+                          externalMetadataColumnId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[BranchCode]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[LastToSalaryUpdateDate]"
+                          dataType="dbTimeStamp"
+                          name="LastToSalaryUpdateDate" />
+                        <externalMetadataColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[MonthSalary]"
+                          dataType="i4"
+                          name="MonthSalary" />
+                        <externalMetadataColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="STG_Fact_LastSalaryUpdate"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[STG_Fact_LastSalaryUpdate]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavMRR]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavMRR]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[LastToSalaryUpdateDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[LastToSalaryUpdateDate]"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[LastToSalaryUpdateDate]"
+                          name="LastToSalaryUpdateDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[MonthSalary]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[MonthSalary]"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[MonthSalary]"
+                          name="MonthSalary"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[BranchCode]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[BranchCode]"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[BranchCode]"
+                          name="BranchCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[LastToSalaryUpdateDate]"
+                          dataType="dbTimeStamp"
+                          name="LastToSalaryUpdateDate" />
+                        <externalMetadataColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[MonthSalary]"
+                          dataType="i4"
+                          name="MonthSalary" />
+                        <externalMetadataColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[BranchCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[BranchCode]"
+                          name="BranchCode" />
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[LastToSalaryUpdateDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[LastToSalaryUpdateDate]"
+                          name="LastToSalaryUpdateDate" />
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[MonthSalary]"
+                          dataType="i4"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[MonthSalary]"
+                          name="MonthSalary" />
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate" />
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DW\DW_Fact_LastSalaryUpdate.Paths[OLE DB Source Output]"
+                  endId="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DW.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C6BDF933-C70C-4B2C-B41E-805F07F09E21}"
+          DTS:From="Package\DW\Delete DW Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\DW\DW_Fact_LastSalaryUpdate" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STG"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{3391AF07-2506-476A-AF60-0912CB7AC1FD}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STG">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\STG\STG_Fact_LastSalaryUpdate"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{42DFCAEA-168F-4E27-B504-618CC51DC7CD}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="STG_Fact_LastSalaryUpdate"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="ODS_Fact_lastSalaryUpdate"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Mtv_LastSalaryRun]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select snif as branch ,
+	  LastToSalaryUpdateDate,
+	  Cast( Cast(YEAR(LastToSalaryUpdateDate) as varchar(4)) +Cast(Right('00' +MONTH(LastToSalaryUpdateDate)-1  , 2) AS varchar(2)) as Int) as MonthSalary
+from Mtv_LastSalaryRun</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavOperational]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavOperational]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].Columns[LastToSalaryUpdateDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[LastToSalaryUpdateDate]"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].Columns[LastToSalaryUpdateDate]"
+                          name="LastToSalaryUpdateDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].Columns[branch]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[branch]"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].Columns[branch]"
+                          name="branch"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].Columns[MonthSalary]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[MonthSalary]"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].Columns[MonthSalary]"
+                          name="MonthSalary"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[LastToSalaryUpdateDate]"
+                          dataType="dbTimeStamp"
+                          name="LastToSalaryUpdateDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[branch]"
+                          dataType="i4"
+                          name="branch" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].ExternalColumns[MonthSalary]"
+                          dataType="i4"
+                          name="MonthSalary" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[branch]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[branch]"
+                          name="branch" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[LastToSalaryUpdateDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[LastToSalaryUpdateDate]"
+                          name="LastToSalaryUpdateDate" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[MonthSalary]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[MonthSalary]"
+                          name="MonthSalary" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="STG_Fact_LastSalaryUpdate"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[STG_Fact_LastSalaryUpdate]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavMRR]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavMRR]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].Columns[LastToSalaryUpdateDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="LastToSalaryUpdateDate"
+                          externalMetadataColumnId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[LastToSalaryUpdateDate]"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].Columns[LastToSalaryUpdateDate]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].Columns[MonthSalary]"
+                          cachedDataType="i4"
+                          cachedName="MonthSalary"
+                          externalMetadataColumnId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[MonthSalary]"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].Columns[MonthSalary]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].Columns[branch]"
+                          cachedDataType="i4"
+                          cachedName="branch"
+                          externalMetadataColumnId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output].Columns[branch]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[LastToSalaryUpdateDate]"
+                          dataType="dbTimeStamp"
+                          name="LastToSalaryUpdateDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[MonthSalary]"
+                          dataType="i4"
+                          name="MonthSalary" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\STG\STG_Fact_LastSalaryUpdate.Paths[OLE DB Source Output]"
+                  endId="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\STG\Truncate STG_Fact_LastSalaryUpdate"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{EFB25C1E-995E-4AE9-AFDE-E3E6D99BAC97}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate STG_Fact_LastSalaryUpdate"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{55A3ED40-42A6-4BC9-A63E-1E1ED9C8617E}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.STG_Fact_LastSalaryUpdate" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\STG.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{D0B951EC-932C-4B52-92FC-7388DBE6B946}"
+          DTS:From="Package\STG\Truncate STG_Fact_LastSalaryUpdate"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\STG\STG_Fact_LastSalaryUpdate" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FD9CD372-C926-4687-83A5-853A5B1D6D34}"
+      DTS:From="Package\STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DW" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="256,42"
+          Id="Package\STG\Truncate STG_Fact_LastSalaryUpdate"
+          TopLeft="19,18" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\STG\STG_Fact_LastSalaryUpdate"
+          TopLeft="36,115" />
+        <EdgeLayout
+          Id="Package\STG.PrecedenceConstraints[Constraint]"
+          TopLeft="144.25,60">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="280,212"
+          Size="280,255"
+          Id="Package\STG"
+          TopLeft="193,83" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\DW\DW_Fact_LastSalaryUpdate"
+          TopLeft="28,92" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\DW\Delete DW Table"
+          TopLeft="60,26" />
+        <EdgeLayout
+          Id="Package\DW.PrecedenceConstraints[Constraint]"
+          TopLeft="135.75,68">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="286,189"
+          Size="286,232"
+          Id="Package\DW"
+          TopLeft="192,344" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="334,308">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\STG\STG_Fact_LastSalaryUpdate">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="210,42"
+          Id="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate"
+          TopLeft="225,73" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate"
+          TopLeft="229,199" />
+        <EdgeLayout
+          Id="Package\STG\STG_Fact_LastSalaryUpdate.Paths[OLE DB Source Output]"
+          TopLeft="332.25,115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84"
+              Start="0,0"
+              End="0,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\STG_Fact_LastSalaryUpdate\ODS_Fact_lastSalaryUpdate">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DW\DW_Fact_LastSalaryUpdate">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="211,42"
+          Id="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate"
+          TopLeft="250,63" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate"
+          TopLeft="277,178" />
+        <EdgeLayout
+          Id="Package\DW\DW_Fact_LastSalaryUpdate.Paths[OLE DB Source Output]"
+          TopLeft="355.5,105">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26,73"
+              Start="0,0"
+              End="26,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5"
+                    Point2="0,36.5"
+                    Point3="4,36.5" />
+                  <mssgle:LineSegment
+                    End="22,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22,36.5"
+                    Point2="26,36.5"
+                    Point3="26,40.5" />
+                  <mssgle:LineSegment
+                    End="26,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\DW_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\STG_Fact_LastSalaryUpdate\STG_Fact_LastSalaryUpdate">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\DW_Fact_LastSalaryUpdate\DW_Fact_LastSalaryUpdate">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

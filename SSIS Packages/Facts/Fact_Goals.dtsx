@@ -1,0 +1,1976 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/10/2018 4:49:19 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SRV-BI"
+  DTS:CreatorName="MATAV\sensebi1"
+  DTS:DTSID="{AE3EA86A-40FE-4875-B3F4-DFCA62F0D7AE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1037"
+  DTS:ObjectName="Fact_Goals"
+  DTS:PackageType="5"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{A9E99206-0546-45A4-B7D7-7C11A5BB2D95}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{33B75191-38D2-41D6-8AE4-833ACE911CC8}"
+      DTS:ObjectName="MatavDW">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source=SRV-BI;User ID=Sensebi;Password=sense86;Initial Catalog=MatavDW;Provider=SQLNCLI11.1;Auto Translate=False;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;User ID=Sensebi;Initial Catalog=MatavDW;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAf3W4Sl72zUeEFVuFUluVtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABDriSc4yJsE26gIVaY/+7aAAAAAASAAACgAAAAEAAAAEVfyUAbMeds6DrUzYTsvl0QAAAAFgPT66DC4C+ikioqtkw8oxQAAACAi8mXUOdLq2Aa2i/1W53siCqJZw</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavMRR]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CE736CD0-E7A6-4427-BE9C-3D4898531C3D}"
+      DTS:ObjectName="MatavMRR">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source=SRV-BI;User ID=Sensebi;Password=sense86;Initial Catalog=MatavMRR;Provider=SQLNCLI11.1;Auto Translate=False;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;User ID=Sensebi;Initial Catalog=MatavMRR;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAf3W4Sl72zUeEFVuFUluVtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADT8WlChsA51FvjfYbiz+LtAAAAAASAAACgAAAAEAAAAJxrbErckBby6+7M4Z+b/hgQAAAAiTrH8oOeuXzI9eEyQ7mT1hQAAADNg2v+qDAbGThN2FmXz7fLRjrN0g</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavOperational]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{92B5D3B9-7AEC-417E-820D-5FF0E8AF39C6}"
+      DTS:ObjectName="MatavOperational">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;Initial Catalog=MatavOperational;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DWH"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{325CDC3C-EEE9-44B3-BFDB-FA21AD77E0FC}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DWH">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DWH\Delete From DW Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CD34B21D-1989-443B-BDCE-3BB740DED627}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete From DW Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{33B75191-38D2-41D6-8AE4-833ACE911CC8}"
+              SQLTask:SqlStatementSource="DELETE DW&#xA;FROM [MatavDW].[dbo].[DW_Fact_Goals] AS DW&#xA;INNER JOIN [MatavMRR].[dbo].[STG_Fact_Goals] AS STG &#xA;ON DW.BranchCode = STG.BranchCode AND DW.Period=STG.Period" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DWH\DW_Fact_Goals"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{14D253CC-ECBD-4CFC-BC67-5761DD696ACE}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DW_Fact_Goals"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DW_Fact_Goals"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DW_Fact_Goals]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavDW]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].Columns[Branch]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Branch"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Branch]" />
+                        <inputColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].Columns[Period]"
+                          cachedDataType="dbDate"
+                          cachedName="Period"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Period]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Period]" />
+                        <inputColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].Columns[Customers Target Leumi]"
+                          cachedDataType="i4"
+                          cachedName="Customers Target Leumi"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Customers Target Leumi]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Customers Target Leumi]" />
+                        <inputColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].Columns[Hours Target Leumi]"
+                          cachedDataType="i4"
+                          cachedName="Hours Target Leumi"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Hours Target Leumi]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Hours Target Leumi]" />
+                        <inputColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].Columns[BranchCode]"
+                          cachedDataType="i4"
+                          cachedName="BranchCode"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[BranchCode]" />
+                        <inputColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].Columns[Hours Target All Paying Groups]"
+                          cachedDataType="i4"
+                          cachedName="Hours Target All Paying Groups"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Hours Target All Paying Groups]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Hours Target All Paying Groups]" />
+                        <inputColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].Columns[DW_UploadDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DW_UploadDate"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[DW_UploadDate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                          dataType="wstr"
+                          length="255"
+                          name="Branch" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Period]"
+                          dataType="dbDate"
+                          name="Period" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Customers Target Leumi]"
+                          dataType="i4"
+                          name="Customers Target Leumi" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Hours Target Leumi]"
+                          dataType="i4"
+                          name="Hours Target Leumi" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Hours Target All Paying Groups]"
+                          dataType="i4"
+                          name="Hours Target All Paying Groups" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="STG_Fact_Goals"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[STG_Fact_Goals]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavMRR]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavMRR]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Branch]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[Branch]"
+                          length="255"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Branch]"
+                          name="Branch"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Period]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[Period]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Period]"
+                          name="Period"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Customers Target Leumi]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[Customers Target Leumi]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Customers Target Leumi]"
+                          name="Customers Target Leumi"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Hours Target Leumi]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[Hours Target Leumi]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Hours Target Leumi]"
+                          name="Hours Target Leumi"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[BranchCode]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[BranchCode]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[BranchCode]"
+                          name="BranchCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Hours Target All Paying Groups]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[Hours Target All Paying Groups]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[Hours Target All Paying Groups]"
+                          name="Hours Target All Paying Groups"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[Branch]"
+                          dataType="wstr"
+                          length="255"
+                          name="Branch" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[Period]"
+                          dataType="dbDate"
+                          name="Period" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[Customers Target Leumi]"
+                          dataType="i4"
+                          name="Customers Target Leumi" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[Hours Target Leumi]"
+                          dataType="i4"
+                          name="Hours Target Leumi" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[Hours Target All Paying Groups]"
+                          dataType="i4"
+                          name="Hours Target All Paying Groups" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[Branch]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[Branch]"
+                          name="Branch" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[Period]"
+                          dataType="dbDate"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[Period]"
+                          name="Period" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[Customers Target Leumi]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[Customers Target Leumi]"
+                          name="Customers Target Leumi" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[Hours Target Leumi]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[Hours Target Leumi]"
+                          name="Hours Target Leumi" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[Hours Target All Paying Groups]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[Hours Target All Paying Groups]"
+                          name="Hours Target All Paying Groups" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[BranchCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[BranchCode]"
+                          name="BranchCode" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DWH\DW_Fact_Goals.Paths[OLE DB Source Output]"
+                  endId="Package\DWH\DW_Fact_Goals\DW_Fact_Goals.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\DWH\DW_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DWH.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{359FA62A-7186-4094-9C5E-5AD1A89D09B2}"
+          DTS:From="Package\DWH\Delete From DW Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\DWH\DW_Fact_Goals" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\MRR"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{BF6545EC-2C3D-42AB-B9F7-EFD53674DB87}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MRR">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\MRR\MRR_Goals"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{136A9C29-98B7-4189-97DB-78A4CA830F1D}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="MRR_Goals"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\MRR\MRR_Goals\MRR_Goals"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="MRR_Goals"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[MRR_Goals]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR\MRR_Goals\MRR_Goals.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavMRR]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavMRR]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].Columns[סניף]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="סניף"
+                          externalMetadataColumnId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].ExternalColumns[סניף]"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[סניף]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].Columns[חודש]"
+                          cachedDataType="dbDate"
+                          cachedName="חודש"
+                          externalMetadataColumnId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].ExternalColumns[חודש]"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[חודש]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          cachedDataType="i4"
+                          cachedName="יעד כמות חוקי סיעוד ביטוח לאומי"
+                          externalMetadataColumnId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].ExternalColumns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].Columns[יעד שעות ביטוח לאומי]"
+                          cachedDataType="i4"
+                          cachedName="יעד שעות ביטוח לאומי"
+                          externalMetadataColumnId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].ExternalColumns[יעד שעות ביטוח לאומי]"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות ביטוח לאומי]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].Columns[יעד שעות כללי-סיעוד]"
+                          cachedDataType="i4"
+                          cachedName="יעד שעות כללי-סיעוד"
+                          externalMetadataColumnId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].ExternalColumns[יעד שעות כללי-סיעוד]"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות כללי-סיעוד]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].ExternalColumns[סניף]"
+                          dataType="wstr"
+                          length="255"
+                          name="סניף" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].ExternalColumns[חודש]"
+                          dataType="dbDate"
+                          name="חודש" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].ExternalColumns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          dataType="i4"
+                          name="יעד כמות חוקי סיעוד ביטוח לאומי" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].ExternalColumns[יעד שעות ביטוח לאומי]"
+                          dataType="i4"
+                          name="יעד שעות ביטוח לאומי" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input].ExternalColumns[יעד שעות כללי-סיעוד]"
+                          dataType="i4"
+                          name="יעד שעות כללי-סיעוד" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\MRR_Goals\MRR_Goals.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_Goals\MRR_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\MRR_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_Goals\MRR_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\MRR\MRR_Goals\ODS_Goals"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="ODS_Goals"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ODS_Goals]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR\MRR_Goals\ODS_Goals.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavOperational]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavOperational]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[סניף]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[סניף]"
+                          length="255"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[סניף]"
+                          name="סניף"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[חודש]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[חודש]"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[חודש]"
+                          name="חודש"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          name="יעד כמות חוקי סיעוד ביטוח לאומי"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות ביטוח לאומי]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד שעות ביטוח לאומי]"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות ביטוח לאומי]"
+                          name="יעד שעות ביטוח לאומי"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות כללי-סיעוד]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד שעות כללי-סיעוד]"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות כללי-סיעוד]"
+                          name="יעד שעות כללי-סיעוד"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[סניף]"
+                          dataType="wstr"
+                          length="255"
+                          name="סניף" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[חודש]"
+                          dataType="dbDate"
+                          name="חודש" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          dataType="i4"
+                          name="יעד כמות חוקי סיעוד ביטוח לאומי" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד שעות ביטוח לאומי]"
+                          dataType="i4"
+                          name="יעד שעות ביטוח לאומי" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד שעות כללי-סיעוד]"
+                          dataType="i4"
+                          name="יעד שעות כללי-סיעוד" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[סניף]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[סניף]"
+                          name="סניף" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[חודש]"
+                          dataType="dbDate"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[חודש]"
+                          name="חודש" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          name="יעד כמות חוקי סיעוד ביטוח לאומי" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד שעות ביטוח לאומי]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד שעות ביטוח לאומי]"
+                          name="יעד שעות ביטוח לאומי" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד שעות כללי-סיעוד]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד שעות כללי-סיעוד]"
+                          name="יעד שעות כללי-סיעוד" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\MRR\MRR_Goals.Paths[OLE DB Source Output]"
+                  endId="Package\MRR\MRR_Goals\MRR_Goals.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\MRR\MRR_Goals\ODS_Goals.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\MRR\Truncate MRR_Goals"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1E152C60-BB2A-4883-9609-3A90A6B64240}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate MRR_Goals"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE736CD0-E7A6-4427-BE9C-3D4898531C3D}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.MRR_Goals" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\MRR.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{D76EF31F-0F8E-4902-BD89-B43EAAF625E7}"
+          DTS:From="Package\MRR\Truncate MRR_Goals"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\MRR\MRR_Goals" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STG"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{27E8A9F1-9357-4099-8292-BEC800053081}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STG">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\STG\STG_Fact_Goals"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E91C0C67-107E-4234-BAD3-BD3ACF4C5496}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="STG_Fact_Goals"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\STG\STG_Fact_Goals\Lookup BranchID"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup BranchID"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DW_DIM_Branches]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DW_DIM_Branches]) [refTable]
+where [refTable].[Branch] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="BranchCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Branch" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Area" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DW_UploadDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[סניף]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\STG_Fact_Goals\Lookup BranchID.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavDW]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavDW]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\STG\STG_Fact_Goals\Lookup BranchID.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_Goals\Lookup BranchID.Inputs[Lookup Input].Columns[סניף]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="סניף"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[סניף]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Branch</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STG\STG_Fact_Goals\Lookup BranchID.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\STG\STG_Fact_Goals\Lookup BranchID.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\Lookup BranchID.Outputs[Lookup Match Output].Columns[BranchCode]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\STG\STG_Fact_Goals\Lookup BranchID.Outputs[Lookup Match Output].Columns[BranchCode]"
+                          name="BranchCode"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">BranchCode</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\STG\STG_Fact_Goals\Lookup BranchID.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\STG\STG_Fact_Goals\Lookup BranchID.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\STG\STG_Fact_Goals\Lookup BranchID.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\STG\STG_Fact_Goals\Lookup BranchID.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\Lookup BranchID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_Goals\Lookup BranchID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\Lookup BranchID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_Goals\Lookup BranchID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STG\STG_Fact_Goals\ODS_Goals"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="ODS_Goals"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ODS_Goals]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\STG_Fact_Goals\ODS_Goals.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavOperational]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavOperational]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[סניף]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[סניף]"
+                          length="255"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[סניף]"
+                          name="סניף"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[חודש]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[חודש]"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[חודש]"
+                          name="חודש"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          name="יעד כמות חוקי סיעוד ביטוח לאומי"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות ביטוח לאומי]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד שעות ביטוח לאומי]"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות ביטוח לאומי]"
+                          name="יעד שעות ביטוח לאומי"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות כללי-סיעוד]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד שעות כללי-סיעוד]"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות כללי-סיעוד]"
+                          name="יעד שעות כללי-סיעוד"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[סניף]"
+                          dataType="wstr"
+                          length="255"
+                          name="סניף" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[חודש]"
+                          dataType="dbDate"
+                          name="חודש" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          dataType="i4"
+                          name="יעד כמות חוקי סיעוד ביטוח לאומי" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד שעות ביטוח לאומי]"
+                          dataType="i4"
+                          name="יעד שעות ביטוח לאומי" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[יעד שעות כללי-סיעוד]"
+                          dataType="i4"
+                          name="יעד שעות כללי-סיעוד" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[סניף]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[סניף]"
+                          name="סניף" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[חודש]"
+                          dataType="dbDate"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[חודש]"
+                          name="חודש" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          name="יעד כמות חוקי סיעוד ביטוח לאומי" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד שעות ביטוח לאומי]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד שעות ביטוח לאומי]"
+                          name="יעד שעות ביטוח לאומי" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד שעות כללי-סיעוד]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[יעד שעות כללי-סיעוד]"
+                          name="יעד שעות כללי-סיעוד" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="STG_Fact_Goals"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[STG_Fact_Goals]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavMRR]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavMRR]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].Columns[BranchCode]"
+                          cachedDataType="i4"
+                          cachedName="BranchCode"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          lineageId="Package\STG\STG_Fact_Goals\Lookup BranchID.Outputs[Lookup Match Output].Columns[BranchCode]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].Columns[סניף]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="סניף"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[סניף]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].Columns[חודש]"
+                          cachedDataType="dbDate"
+                          cachedName="חודש"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Period]"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[חודש]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]"
+                          cachedDataType="i4"
+                          cachedName="יעד כמות חוקי סיעוד ביטוח לאומי"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Customers Target Leumi]"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד כמות חוקי סיעוד ביטוח לאומי]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].Columns[יעד שעות ביטוח לאומי]"
+                          cachedDataType="i4"
+                          cachedName="יעד שעות ביטוח לאומי"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Hours Target Leumi]"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות ביטוח לאומי]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].Columns[יעד שעות כללי-סיעוד]"
+                          cachedDataType="i4"
+                          cachedName="יעד שעות כללי-סיעוד"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Hours Target All Paying Groups]"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[יעד שעות כללי-סיעוד]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].Columns[DW_UploadDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DW_UploadDate"
+                          externalMetadataColumnId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output].Columns[DW_UploadDate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                          dataType="wstr"
+                          length="255"
+                          name="Branch" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Period]"
+                          dataType="dbDate"
+                          name="Period" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Customers Target Leumi]"
+                          dataType="i4"
+                          name="Customers Target Leumi" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Hours Target Leumi]"
+                          dataType="i4"
+                          name="Hours Target Leumi" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[Hours Target All Paying Groups]"
+                          dataType="i4"
+                          name="Hours Target All Paying Groups" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\STG\STG_Fact_Goals.Paths[Lookup Match Output]"
+                  endId="Package\STG\STG_Fact_Goals\STG_Fact_Goals.Inputs[OLE DB Destination Input]"
+                  name="Lookup Match Output"
+                  startId="Package\STG\STG_Fact_Goals\Lookup BranchID.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\STG\STG_Fact_Goals.Paths[OLE DB Source Output]"
+                  endId="Package\STG\STG_Fact_Goals\Lookup BranchID.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\STG\STG_Fact_Goals\ODS_Goals.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\STG\Truncate STG_Fact_Goals"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D3637501-FECC-4ED6-9204-FE86CCC2D232}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate STG_Fact_Goals"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE736CD0-E7A6-4427-BE9C-3D4898531C3D}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.STG_Fact_Goals" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\STG.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{44A320EB-0A9E-41FB-8582-D93638E492FD}"
+          DTS:From="Package\STG\Truncate STG_Fact_Goals"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\STG\STG_Fact_Goals" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C502AC7A-FE49-4362-8717-04EB307365D6}"
+      DTS:From="Package\MRR"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{1AB1567D-49B7-4B26-965C-87EFC9DE778C}"
+      DTS:From="Package\STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DWH" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DWH\Delete From DW Table"
+          TopLeft="23,4" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\DWH\DW_Fact_Goals"
+          TopLeft="38,88" />
+        <EdgeLayout
+          Id="Package\DWH.PrecedenceConstraints[Constraint]"
+          TopLeft="115.25,46">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="225,183"
+          Size="225,226"
+          Id="Package\DWH"
+          TopLeft="115,652" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\MRR\MRR_Goals"
+          TopLeft="67,112" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\MRR\Truncate MRR_Goals"
+          TopLeft="47,12" />
+        <EdgeLayout
+          Id="Package\MRR.PrecedenceConstraints[Constraint]"
+          TopLeft="134.25,54">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="259,209"
+          Size="259,252"
+          Id="Package\MRR"
+          TopLeft="86,14" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\STG\STG_Fact_Goals"
+          TopLeft="42,105" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\STG\Truncate STG_Fact_Goals"
+          TopLeft="24,16" />
+        <EdgeLayout
+          Id="Package\STG.PrecedenceConstraints[Constraint]"
+          TopLeft="121.75,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="246,212"
+          Size="246,255"
+          Id="Package\STG"
+          TopLeft="97,309" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="217.75,266">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="223.75,564">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,88"
+              Start="0,0"
+              End="0,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DWH\DW_Fact_Goals">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\DWH\DW_Fact_Goals\STG_Fact_Goals"
+          TopLeft="242,79" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\DWH\DW_Fact_Goals\DW_Fact_Goals"
+          TopLeft="242,218" />
+        <EdgeLayout
+          Id="Package\DWH\DW_Fact_Goals.Paths[OLE DB Source Output]"
+          TopLeft="319,121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,97"
+              Start="0,0"
+              End="0,89.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,89.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\DW_Fact_Goals\DW_Fact_Goals">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\DW_Fact_Goals\STG_Fact_Goals">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\MRR\MRR_Goals">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="132,42"
+          Id="Package\MRR\MRR_Goals\MRR_Goals"
+          TopLeft="262,179" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\MRR\MRR_Goals\ODS_Goals"
+          TopLeft="263,77" />
+        <EdgeLayout
+          Id="Package\MRR\MRR_Goals.Paths[OLE DB Source Output]"
+          TopLeft="328.25,119">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR\MRR_Goals\MRR_Goals">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR\MRR_Goals\ODS_Goals">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\STG\STG_Fact_Goals">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="131,42"
+          Id="Package\STG\STG_Fact_Goals\ODS_Goals"
+          TopLeft="150,32" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\STG\STG_Fact_Goals\STG_Fact_Goals"
+          TopLeft="134,277" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\STG\STG_Fact_Goals\Lookup BranchID"
+          TopLeft="132,154" />
+        <EdgeLayout
+          Id="Package\STG\STG_Fact_Goals.Paths[OLE DB Source Output]"
+          TopLeft="213.75,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG\STG_Fact_Goals.Paths[Lookup Match Output]"
+          TopLeft="211.75,196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,30.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\STG_Fact_Goals\ODS_Goals">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\STG_Fact_Goals\STG_Fact_Goals">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\STG_Fact_Goals\Lookup BranchID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DW_DIM_Branches]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

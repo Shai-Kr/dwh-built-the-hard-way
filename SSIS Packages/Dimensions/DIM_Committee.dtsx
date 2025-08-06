@@ -1,0 +1,2134 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/24/2017 4:30:54 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SRV-BI"
+  DTS:CreatorName="MATAV\sensebi1"
+  DTS:DTSID="{448AEFFF-5A8D-4874-B4D1-6D2E875A184D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1037"
+  DTS:ObjectName="DIM_Committee"
+  DTS:PackageType="5"
+  DTS:VersionBuild="82"
+  DTS:VersionGUID="{C100C11D-2B4E-4DDD-A392-A2D45D35AF60}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BED48D55-9143-4183-A6A1-4794240D41F9}"
+      DTS:ObjectName="MatavDW">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source=SRV-BI;User ID=Sensebi;Password=sense86;Initial Catalog=MatavDW;Provider=SQLNCLI11.1;Auto Translate=False;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;User ID=Sensebi;Initial Catalog=MatavDW;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAf3W4Sl72zUeEFVuFUluVtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABq0EOTS/tTEX0F30mZhTsUAAAAAASAAACgAAAAEAAAAAdI7mOYG8wUgBvOnIJ1CFgQAAAAOWoshDb5+lQ22Emaoeh/hBQAAAAPriem/LrskZH+elpdFFvJ4u/n9A</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavMRR]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{942CBA93-055C-4F32-9E9C-C1F8BE814FAC}"
+      DTS:ObjectName="MatavMRR">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source=SRV-BI;User ID=Sensebi;Password=sense86;Initial Catalog=MatavMRR;Provider=SQLNCLI11.1;Auto Translate=False;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;User ID=Sensebi;Initial Catalog=MatavMRR;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAf3W4Sl72zUeEFVuFUluVtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABhfCnWqbGeIXFmbMLc8sqqAAAAAASAAACgAAAAEAAAADV9pJEwM7+gzyl6bA8mWDkQAAAAzw1r64cgaIurKtpLPCWpmxQAAABVi1ep/PCRWetyHpLPMVXyEQ1H9Q</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavOperational]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{92B5D3B9-7AEC-417E-820D-5FF0E8AF39C6}"
+      DTS:ObjectName="MatavOperational">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;Initial Catalog=MatavOperational;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6F8251D3-A4B2-4A13-BF1E-092126E42B2D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Run_FromDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/24/2017 5:17:51 PM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DWH"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{EEE58289-4642-46A4-82B2-6668D0582231}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DWH">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DWH\Delete From DW Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{55C38A4E-AA49-4C6C-8E22-3C9D9A12109A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete From DW Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BED48D55-9143-4183-A6A1-4794240D41F9}"
+              SQLTask:SqlStatementSource="DELETE DW&#xA;FROM [MatavDW].[dbo].[DW_DIM_Committee] AS DW&#xA;INNER JOIN [MatavMRR].[dbo].[STG_DIM_Committee] AS STG ON DW.CommitteeID = STG.CommitteeID&#xA;&#x9;AND DW.BranchCode = STG.BranchCode" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DWH\DW_DIM_Committee"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{5C60E103-31E0-42B1-AB8F-1BB5D8D5C9CD}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DW_DIM_Committee"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DW_DIM_Committee"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DW_DIM_Committee]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavDW]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].Columns[CommitteeID]"
+                          cachedDataType="i4"
+                          cachedName="CommitteeID"
+                          externalMetadataColumnId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[CommitteeID]"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[CommitteeID]" />
+                        <inputColumn
+                          refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].Columns[Committee]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Committee"
+                          externalMetadataColumnId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[Committee]"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[Committee]" />
+                        <inputColumn
+                          refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].Columns[BranchCode]"
+                          cachedDataType="i4"
+                          cachedName="BranchCode"
+                          externalMetadataColumnId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[BranchCode]" />
+                        <inputColumn
+                          refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].Columns[DW_UploadDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DW_UploadDate"
+                          externalMetadataColumnId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[DW_UploadDate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[CommitteeID]"
+                          dataType="i4"
+                          name="CommitteeID" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[Committee]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="Committee" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="STG_DIM_Committee"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[STG_DIM_Committee]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavMRR]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavMRR]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[CommitteeID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].ExternalColumns[CommitteeID]"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[CommitteeID]"
+                          name="CommitteeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[Committee]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].ExternalColumns[Committee]"
+                          length="50"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[Committee]"
+                          name="Committee"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[BranchCode]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].ExternalColumns[BranchCode]"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[BranchCode]"
+                          name="BranchCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].ExternalColumns[CommitteeID]"
+                          dataType="i4"
+                          name="CommitteeID" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].ExternalColumns[Committee]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="Committee" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[CommitteeID]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[CommitteeID]"
+                          name="CommitteeID" />
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[Committee]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[Committee]"
+                          name="Committee" />
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[BranchCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[BranchCode]"
+                          name="BranchCode" />
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate" />
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DWH\DW_DIM_Committee.Paths[OLE DB Source Output]"
+                  endId="Package\DWH\DW_DIM_Committee\DW_DIM_Committee.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\DWH\DW_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DWH.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{0EDDB804-0B7B-42D2-8968-9611B8C078C0}"
+          DTS:From="Package\DWH\Delete From DW Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\DWH\DW_DIM_Committee" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\MRR"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{BE122B67-34D4-4F18-8E0E-0C4EB87F2C30}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MRR">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\MRR\MRR_t_vada"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{CA79EB45-6E36-4436-A4B5-DFD67A506C80}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="MRR_t_vada"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              defaultBufferMaxRows="100000"
+              version="1">
+              <components>
+                <component
+                  refId="Package\MRR\MRR_t_vada\MRR_t_vada"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="MRR_t_vada"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[MRR_T_Vada]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR\MRR_t_vada\MRR_t_vada.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavMRR]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavMRR]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[No]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="No"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[No]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[No]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[HenZchut_ExtBookKeeping]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="HenZchut_ExtBookKeeping"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[HenZchut_ExtBookKeeping]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[HenZchut_ExtBookKeeping]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[HenHova_ExtBookKeeping]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="HenHova_ExtBookKeeping"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[HenHova_ExtBookKeeping]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[HenHova_ExtBookKeeping]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[IsForceHenHovaInHazmana]"
+                          cachedDataType="bool"
+                          cachedName="IsForceHenHovaInHazmana"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[IsForceHenHovaInHazmana]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsForceHenHovaInHazmana]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[IsEveryRecord2BookKeeping]"
+                          cachedDataType="bool"
+                          cachedName="IsEveryRecord2BookKeeping"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[IsEveryRecord2BookKeeping]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsEveryRecord2BookKeeping]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[IsDestined2BookKeeping]"
+                          cachedDataType="bool"
+                          cachedName="IsDestined2BookKeeping"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[IsDestined2BookKeeping]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsDestined2BookKeeping]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[MTV_SluchaNo]"
+                          cachedDataType="i4"
+                          cachedName="MTV_SluchaNo"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[MTV_SluchaNo]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[MTV_SluchaNo]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[IsAutoPopulateTnumetDaily]"
+                          cachedDataType="bool"
+                          cachedName="IsAutoPopulateTnumetDaily"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[IsAutoPopulateTnumetDaily]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsAutoPopulateTnumetDaily]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[ParitNo_ExtBookKeeping]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ParitNo_ExtBookKeeping"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[ParitNo_ExtBookKeeping]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[ParitNo_ExtBookKeeping]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[ContractGuid]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="80"
+                          cachedName="ContractGuid"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[ContractGuid]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[ContractGuid]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[InsertDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="InsertDate"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[InsertDate]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[IUserID]"
+                          cachedDataType="i4"
+                          cachedName="IUserID"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[IUserID]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IUserID]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[UpdateDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="UpdateDate"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[UpdateDate]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[UpdateDate]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[UUserID]"
+                          cachedDataType="i4"
+                          cachedName="UUserID"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[UUserID]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[UUserID]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[Snif]"
+                          cachedDataType="i4"
+                          cachedName="Snif"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[Snif]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[Snif]" />
+                        <inputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].Columns[DW_UploadDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DW_UploadDate"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[DW_UploadDate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[No]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="No" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[HenZchut_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="HenZchut_ExtBookKeeping" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[HenHova_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="HenHova_ExtBookKeeping" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[IsForceHenHovaInHazmana]"
+                          dataType="bool"
+                          name="IsForceHenHovaInHazmana" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[IsEveryRecord2BookKeeping]"
+                          dataType="bool"
+                          name="IsEveryRecord2BookKeeping" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[IsDestined2BookKeeping]"
+                          dataType="bool"
+                          name="IsDestined2BookKeeping" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[MTV_SluchaNo]"
+                          dataType="i4"
+                          name="MTV_SluchaNo" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[IsAutoPopulateTnumetDaily]"
+                          dataType="bool"
+                          name="IsAutoPopulateTnumetDaily" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[ParitNo_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="ParitNo_ExtBookKeeping" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[ContractGuid]"
+                          codePage="1255"
+                          dataType="str"
+                          length="80"
+                          name="ContractGuid" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
+                          dataType="dbTimeStamp"
+                          name="InsertDate" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[IUserID]"
+                          dataType="i4"
+                          name="IUserID" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[UpdateDate]"
+                          dataType="dbTimeStamp"
+                          name="UpdateDate" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[UUserID]"
+                          dataType="i4"
+                          name="UUserID" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[Snif]"
+                          dataType="i4"
+                          name="Snif" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\MRR_t_vada\MRR_t_vada.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_t_vada\MRR_t_vada.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\MRR_t_vada.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_t_vada\MRR_t_vada.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\MRR\MRR_t_vada\ODS_t_vada"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="ODS_t_vada"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ODS_T_Vada]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [No]
+      ,[Name]
+      ,[HenZchut_ExtBookKeeping]
+      ,[HenHova_ExtBookKeeping]
+      ,[IsForceHenHovaInHazmana]
+      ,[IsEveryRecord2BookKeeping]
+      ,[IsDestined2BookKeeping]
+      ,[MTV_SluchaNo]
+      ,[IsAutoPopulateTnumetDaily]
+      ,[ParitNo_ExtBookKeeping]
+      ,[ContractGuid]
+      ,[InsertDate]
+      ,[IUserID]
+      ,[UpdateDate]
+      ,[UUserID]
+      ,[Snif]
+  FROM [dbo].[ODS_T_Vada]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR\MRR_t_vada\ODS_t_vada.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavMRR]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavMRR]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[No]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[No]"
+                          length="50"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[No]"
+                          name="No"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[Name]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="50"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[HenZchut_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[HenZchut_ExtBookKeeping]"
+                          length="50"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[HenZchut_ExtBookKeeping]"
+                          name="HenZchut_ExtBookKeeping"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[HenHova_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[HenHova_ExtBookKeeping]"
+                          length="50"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[HenHova_ExtBookKeeping]"
+                          name="HenHova_ExtBookKeeping"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsForceHenHovaInHazmana]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[IsForceHenHovaInHazmana]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsForceHenHovaInHazmana]"
+                          name="IsForceHenHovaInHazmana"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsEveryRecord2BookKeeping]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[IsEveryRecord2BookKeeping]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsEveryRecord2BookKeeping]"
+                          name="IsEveryRecord2BookKeeping"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsDestined2BookKeeping]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[IsDestined2BookKeeping]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsDestined2BookKeeping]"
+                          name="IsDestined2BookKeeping"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[MTV_SluchaNo]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[MTV_SluchaNo]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[MTV_SluchaNo]"
+                          name="MTV_SluchaNo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsAutoPopulateTnumetDaily]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[IsAutoPopulateTnumetDaily]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IsAutoPopulateTnumetDaily]"
+                          name="IsAutoPopulateTnumetDaily"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[ParitNo_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[ParitNo_ExtBookKeeping]"
+                          length="50"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[ParitNo_ExtBookKeeping]"
+                          name="ParitNo_ExtBookKeeping"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[ContractGuid]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[ContractGuid]"
+                          length="80"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[ContractGuid]"
+                          name="ContractGuid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[InsertDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[InsertDate]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[InsertDate]"
+                          name="InsertDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IUserID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[IUserID]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[IUserID]"
+                          name="IUserID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[UpdateDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[UpdateDate]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[UpdateDate]"
+                          name="UpdateDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[UUserID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[UUserID]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[UUserID]"
+                          name="UUserID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[Snif]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[Snif]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[Snif]"
+                          name="Snif"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[No]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="No" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[HenZchut_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="HenZchut_ExtBookKeeping" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[HenHova_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="HenHova_ExtBookKeeping" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[IsForceHenHovaInHazmana]"
+                          dataType="bool"
+                          name="IsForceHenHovaInHazmana" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[IsEveryRecord2BookKeeping]"
+                          dataType="bool"
+                          name="IsEveryRecord2BookKeeping" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[IsDestined2BookKeeping]"
+                          dataType="bool"
+                          name="IsDestined2BookKeeping" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[MTV_SluchaNo]"
+                          dataType="i4"
+                          name="MTV_SluchaNo" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[IsAutoPopulateTnumetDaily]"
+                          dataType="bool"
+                          name="IsAutoPopulateTnumetDaily" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[ParitNo_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="ParitNo_ExtBookKeeping" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[ContractGuid]"
+                          codePage="1255"
+                          dataType="str"
+                          length="80"
+                          name="ContractGuid" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[InsertDate]"
+                          dataType="dbTimeStamp"
+                          name="InsertDate" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[IUserID]"
+                          dataType="i4"
+                          name="IUserID" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[UpdateDate]"
+                          dataType="dbTimeStamp"
+                          name="UpdateDate" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[UUserID]"
+                          dataType="i4"
+                          name="UUserID" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[Snif]"
+                          dataType="i4"
+                          name="Snif" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[No]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[No]"
+                          name="No" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[HenZchut_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[HenZchut_ExtBookKeeping]"
+                          name="HenZchut_ExtBookKeeping" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[HenHova_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[HenHova_ExtBookKeeping]"
+                          name="HenHova_ExtBookKeeping" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[IsForceHenHovaInHazmana]"
+                          dataType="bool"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[IsForceHenHovaInHazmana]"
+                          name="IsForceHenHovaInHazmana" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[IsEveryRecord2BookKeeping]"
+                          dataType="bool"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[IsEveryRecord2BookKeeping]"
+                          name="IsEveryRecord2BookKeeping" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[IsDestined2BookKeeping]"
+                          dataType="bool"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[IsDestined2BookKeeping]"
+                          name="IsDestined2BookKeeping" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[MTV_SluchaNo]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[MTV_SluchaNo]"
+                          name="MTV_SluchaNo" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[IsAutoPopulateTnumetDaily]"
+                          dataType="bool"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[IsAutoPopulateTnumetDaily]"
+                          name="IsAutoPopulateTnumetDaily" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[ParitNo_ExtBookKeeping]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[ParitNo_ExtBookKeeping]"
+                          name="ParitNo_ExtBookKeeping" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[ContractGuid]"
+                          codePage="1255"
+                          dataType="str"
+                          length="80"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[ContractGuid]"
+                          name="ContractGuid" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[InsertDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[InsertDate]"
+                          name="InsertDate" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[IUserID]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[IUserID]"
+                          name="IUserID" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[UpdateDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[UpdateDate]"
+                          name="UpdateDate" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[UUserID]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[UUserID]"
+                          name="UUserID" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[Snif]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[Snif]"
+                          name="Snif" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\MRR\MRR_t_vada.Paths[OLE DB Source Output]"
+                  endId="Package\MRR\MRR_t_vada\MRR_t_vada.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\MRR\MRR_t_vada\ODS_t_vada.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\MRR\Truncate MRR Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F487B031-82D0-4A6E-8DA5-8443CBC716DF}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate MRR Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{942CBA93-055C-4F32-9E9C-C1F8BE814FAC}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE MRR_t_vada" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\MRR.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{D570E33A-9150-4C15-BC4C-2E855C744C28}"
+          DTS:From="Package\MRR\Truncate MRR Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\MRR\MRR_t_vada" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STG"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{0669E277-4A37-4EBB-A8B7-6105A82529F5}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STG">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\STG\STG_DIM_Committee"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{28720676-0E3C-4B0C-9886-394C88244E8C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="STG_DIM_Committee"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\STG\STG_DIM_Committee\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\STG\STG_DIM_Committee\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STG\STG_DIM_Committee\Data Conversion.Inputs[Data Conversion Input].Columns[No]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="No"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[No]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STG\STG_DIM_Committee\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\STG\STG_DIM_Committee\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\Data Conversion.Outputs[Data Conversion Output].Columns[No]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\STG\STG_DIM_Committee\Data Conversion.Outputs[Data Conversion Output].Columns[No]"
+                          name="No"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[No]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\STG\STG_DIM_Committee\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\STG\STG_DIM_Committee\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_DIM_Committee\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_DIM_Committee\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STG\STG_DIM_Committee\ODS_T_Vada"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="ODS_T_Vada"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT No
+	,NAME
+	,Snif
+                  ,DW_UploadDate
+FROM ODS_T_Vada</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavOperational]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavOperational]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[No]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].ExternalColumns[No]"
+                          length="50"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[No]"
+                          name="No"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[NAME]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].ExternalColumns[NAME]"
+                          length="50"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[NAME]"
+                          name="NAME"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[Snif]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].ExternalColumns[Snif]"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[Snif]"
+                          name="Snif"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].ExternalColumns[No]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="No" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].ExternalColumns[NAME]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="NAME" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].ExternalColumns[Snif]"
+                          dataType="i4"
+                          name="Snif" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[No]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[No]"
+                          name="No" />
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[NAME]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[NAME]"
+                          name="NAME" />
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[Snif]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[Snif]"
+                          name="Snif" />
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate" />
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="STG_DIM_Committee"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[STG_DIM_Committee]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavMRR]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavMRR]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].Columns[DW_UploadDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DW_UploadDate"
+                          externalMetadataColumnId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[DW_UploadDate]" />
+                        <inputColumn
+                          refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].Columns[No]"
+                          cachedDataType="i4"
+                          cachedName="No"
+                          externalMetadataColumnId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[CommitteeID]"
+                          lineageId="Package\STG\STG_DIM_Committee\Data Conversion.Outputs[Data Conversion Output].Columns[No]" />
+                        <inputColumn
+                          refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].Columns[Snif]"
+                          cachedDataType="i4"
+                          cachedName="Snif"
+                          externalMetadataColumnId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[Snif]" />
+                        <inputColumn
+                          refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].Columns[NAME]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NAME"
+                          externalMetadataColumnId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[Committee]"
+                          lineageId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output].Columns[NAME]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[CommitteeID]"
+                          dataType="i4"
+                          name="CommitteeID" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[Committee]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="Committee" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\STG\STG_DIM_Committee.Paths[Data Conversion Output]"
+                  endId="Package\STG\STG_DIM_Committee\STG_DIM_Committee.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\STG\STG_DIM_Committee\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\STG\STG_DIM_Committee.Paths[OLE DB Source Output]"
+                  endId="Package\STG\STG_DIM_Committee\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\STG\STG_DIM_Committee\ODS_T_Vada.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\STG\Truncate STG Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{16BCC582-3DC7-47D6-B73E-FBC0DB790AEF}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate STG Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{942CBA93-055C-4F32-9E9C-C1F8BE814FAC}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.STG_DIM_Committee" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\STG.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{0C50E925-87C7-4070-A7D0-E79046612D65}"
+          DTS:From="Package\STG\Truncate STG Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\STG\STG_DIM_Committee" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{DD815D77-9290-48D2-88C5-5023B2C347C0}"
+      DTS:From="Package\MRR"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{FCBA99BF-4858-442D-8182-FE59341E8E35}"
+      DTS:From="Package\STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DWH" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DWH\Delete From DW Table"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\DWH\DW_DIM_Committee"
+          TopLeft="9.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\DWH.PrecedenceConstraints[Constraint]"
+          TopLeft="98.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="197,205"
+          Size="197,248"
+          Id="Package\DWH"
+          TopLeft="5.50000000000011,621.5" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\MRR\MRR_t_vada"
+          TopLeft="24,107.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\MRR\Truncate MRR Table"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\MRR.PrecedenceConstraints[Constraint]"
+          TopLeft="93,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="186,205"
+          Size="186,248"
+          Id="Package\MRR"
+          TopLeft="11,5.5" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\STG\STG_DIM_Committee"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\STG\Truncate STG Table"
+          TopLeft="9.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\STG.PrecedenceConstraints[Constraint]"
+          TopLeft="95.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="191,205"
+          Size="191,248"
+          Id="Package\STG"
+          TopLeft="8.50000000000007,313.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="104,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="104,561.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DWH\DW_DIM_Committee">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\DWH\DW_DIM_Committee\STG_DIM_Committee"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\DWH\DW_DIM_Committee\DW_DIM_Committee"
+          TopLeft="6.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\DWH\DW_DIM_Committee.Paths[OLE DB Source Output]"
+          TopLeft="95.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\DW_DIM_Committee\DW_DIM_Committee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\DW_DIM_Committee\STG_DIM_Committee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\MRR\MRR_t_vada">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="137,42"
+          Id="Package\MRR\MRR_t_vada\ODS_t_vada"
+          TopLeft="6.00000000000001,5.5" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\MRR\MRR_t_vada\MRR_t_vada"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\MRR\MRR_t_vada.Paths[OLE DB Source Output]"
+          TopLeft="74.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR\MRR_t_vada\MRR_t_vada">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR\MRR_t_vada\ODS_t_vada">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\STG\STG_DIM_Committee">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\STG\STG_DIM_Committee\ODS_T_Vada"
+          TopLeft="65.5,6.5" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\STG\STG_DIM_Committee\Data Conversion"
+          TopLeft="53.5,112.5" />
+        <EdgeLayout
+          Id="Package\STG\STG_DIM_Committee.Paths[OLE DB Source Output]"
+          TopLeft="133.75,48.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,42"
+          Id="Package\STG\STG_DIM_Committee\STG_DIM_Committee"
+          TopLeft="48,201" />
+        <EdgeLayout
+          Id="Package\STG\STG_DIM_Committee.Paths[Data Conversion Output]"
+          TopLeft="134.75,154.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.5"
+              Start="0,0"
+              End="0,39">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\STG_DIM_Committee\ODS_T_Vada">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\STG_DIM_Committee\STG_DIM_Committee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

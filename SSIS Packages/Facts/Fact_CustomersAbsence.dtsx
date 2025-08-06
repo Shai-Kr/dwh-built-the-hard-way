@@ -1,0 +1,2011 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/24/2017 4:30:54 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SRV-BI"
+  DTS:CreatorName="MATAV\sensebi1"
+  DTS:DTSID="{BE350DE0-A3E2-4AC0-89F8-826C7A02DB17}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1037"
+  DTS:ObjectName="Fact_CustomersAbsence"
+  DTS:PackageType="5"
+  DTS:VersionBuild="168"
+  DTS:VersionGUID="{CC43BEA0-7058-4C87-8A04-EA793B5141B4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3BB199F5-226D-47AC-A8D7-D053C1154EE6}"
+      DTS:ObjectName="MatavDW">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source=SRV-BI;User ID=Sensebi;Password=sense86;Initial Catalog=MatavDW;Provider=SQLNCLI11.1;Auto Translate=False;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;User ID=Sensebi;Initial Catalog=MatavDW;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAf3W4Sl72zUeEFVuFUluVtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADTfR3/6j9GOBcV7bbkerV7AAAAAASAAACgAAAAEAAAAFhU2rmXILiaGSpoizL4cFAQAAAABrAJUfh6bcXDKwCIgkMZRBQAAAAqwDRLIZqPQOZxThFtBZSwCKGQ/A</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavMRR]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C9517DA3-5BEF-4DFD-B999-A147D2A9AC34}"
+      DTS:ObjectName="MatavMRR">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source=SRV-BI;User ID=Sensebi;Password=sense86;Initial Catalog=MatavMRR;Provider=SQLNCLI11.1;Auto Translate=False;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;User ID=Sensebi;Initial Catalog=MatavMRR;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAf3W4Sl72zUeEFVuFUluVtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADVjCAndzTupSgpvyXUcu42AAAAAASAAACgAAAAEAAAALviczBIfmYWR7fFlPok390QAAAARKCC1rfk8qXUv8z16sip/hQAAADMlms6KfqFnevq/IcKTkYl0pnSJw</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MatavOperational]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F89CB038-3E97-48CD-B8A9-1313BBB5DA38}"
+      DTS:ObjectName="MatavOperational">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SRV-BI;Initial Catalog=MatavOperational;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C5EE09E0-CC21-414B-9385-049DE8BA356E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Run_FromDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/24/2017 5:17:51 PM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DWH"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8B24349A-C458-45CF-B0EF-F26ABD01EA92}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DWH">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DWH\Delete Customer_Key IS NULL &amp; Period &gt; CurrentMonth"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{43766B39-6383-4F4B-8527-E313AA785EB9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete Customer_Key IS NULL &amp; Period &gt; CurrentMonth"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{3BB199F5-226D-47AC-A8D7-D053C1154EE6}"
+              SQLTask:SqlStatementSource="DELETE&#xA;FROM [dbo].[DW_Fact_CustomersAbsence]&#xA;WHERE &#xA;(&#xA;Customer_Key IS NULL&#xA;OR &#xA;Period &gt; DATEADD(DD,1,EOMONTH(DATEADD(MM,0,  GETDATE()),-1))&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DWH\Delete From DW Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{52DD4A07-0A9F-486D-80AC-A52AB1A118A9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete From DW Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{3BB199F5-226D-47AC-A8D7-D053C1154EE6}"
+              SQLTask:SqlStatementSource="DELETE DW&#xA;FROM [MatavDW].[dbo].[DW_Fact_CustomersAbsence] AS DW&#xA;INNER JOIN [MatavMRR].[dbo].[STG_Fact_CustomersAbsence] AS STG &#xA;ON DW.BranchCode = STG.BranchCode&#xA;AND DW.Period= STG.Period&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DWH\DWH_Fact_CustomersAbsence"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{5FC6A4A4-AECA-4B79-9572-362A572C765C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DWH_Fact_CustomersAbsence"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DW_Fact_CustomersAbsence"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DW_Fact_CustomersAbsence]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavDW]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[Period]"
+                          cachedDataType="dbDate"
+                          cachedName="Period"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Period]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Period]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[FromDate]"
+                          cachedDataType="dbDate"
+                          cachedName="FromDate"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[FromDate]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[FromDate]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[ToDate]"
+                          cachedDataType="dbDate"
+                          cachedName="ToDate"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[ToDate]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[ToDate]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[IspuzID]"
+                          cachedDataType="r8"
+                          cachedName="IspuzID"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IspuzID]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IspuzID]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                          cachedDataType="i4"
+                          cachedName="CustomerID"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[Customer_Key]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="142"
+                          cachedName="Customer_Key"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Key]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Customer_Key]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[Description]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Description"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Description]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[KodHos]"
+                          cachedDataType="i4"
+                          cachedName="KodHos"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[KodHos]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[KodHos]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[IsUpdateAfterHen]"
+                          cachedDataType="bool"
+                          cachedName="IsUpdateAfterHen"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IsUpdateAfterHen]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IsUpdateAfterHen]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[IsBlockSaot]"
+                          cachedDataType="bool"
+                          cachedName="IsBlockSaot"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IsBlockSaot]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IsBlockSaot]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[BranchCode]"
+                          cachedDataType="i4"
+                          cachedName="BranchCode"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[BranchCode]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[DW_UploadDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DW_UploadDate"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[DW_UploadDate]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[InsertDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InsertDate"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[InsertDate]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[IUserID]"
+                          cachedDataType="i4"
+                          cachedName="IUserID"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IUserID]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IUserID]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[UpdateDate]"
+                          cachedDataType="dbDate"
+                          cachedName="UpdateDate"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[UpdateDate]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[UpdateDate]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[UUserID]"
+                          cachedDataType="i4"
+                          cachedName="UUserID"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[UUserID]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[UUserID]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[Detail]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="80"
+                          cachedName="Detail"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Detail]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Detail]" />
+                        <inputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[AbsenceDays]"
+                          cachedDataType="i4"
+                          cachedName="AbsenceDays"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[AbsenceDays]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[AbsenceDays]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Period]"
+                          dataType="dbDate"
+                          name="Period" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[FromDate]"
+                          dataType="dbDate"
+                          name="FromDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[ToDate]"
+                          dataType="dbDate"
+                          name="ToDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IspuzID]"
+                          dataType="r8"
+                          name="IspuzID" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                          dataType="i4"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Key]"
+                          codePage="1255"
+                          dataType="str"
+                          length="142"
+                          name="Customer_Key" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="Description" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[KodHos]"
+                          dataType="i4"
+                          name="KodHos" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IsUpdateAfterHen]"
+                          dataType="bool"
+                          name="IsUpdateAfterHen" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IsBlockSaot]"
+                          dataType="bool"
+                          name="IsBlockSaot" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
+                          dataType="dbDate"
+                          name="InsertDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IUserID]"
+                          dataType="i4"
+                          name="IUserID" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[UpdateDate]"
+                          dataType="dbDate"
+                          name="UpdateDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[UUserID]"
+                          dataType="i4"
+                          name="UUserID" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Detail]"
+                          codePage="1255"
+                          dataType="str"
+                          length="80"
+                          name="Detail" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[AbsenceDays]"
+                          dataType="i4"
+                          name="AbsenceDays" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="STG_Fact_CustomersAbsence"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[STG_Fact_CustomersAbsence]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavMRR]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavMRR]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Period]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[Period]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Period]"
+                          name="Period"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[FromDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[FromDate]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[FromDate]"
+                          name="FromDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[ToDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[ToDate]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[ToDate]"
+                          name="ToDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IspuzID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[IspuzID]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IspuzID]"
+                          name="IspuzID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                          name="CustomerID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Customer_Key]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[Customer_Key]"
+                          length="142"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Customer_Key]"
+                          name="Customer_Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Description]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                          length="50"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Description]"
+                          name="Description"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[KodHos]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[KodHos]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[KodHos]"
+                          name="KodHos"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IsUpdateAfterHen]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[IsUpdateAfterHen]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IsUpdateAfterHen]"
+                          name="IsUpdateAfterHen"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IsBlockSaot]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[IsBlockSaot]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IsBlockSaot]"
+                          name="IsBlockSaot"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[BranchCode]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[BranchCode]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[BranchCode]"
+                          name="BranchCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[InsertDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[InsertDate]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[InsertDate]"
+                          name="InsertDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IUserID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[IUserID]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[IUserID]"
+                          name="IUserID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[UpdateDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[UpdateDate]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[UpdateDate]"
+                          name="UpdateDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[UUserID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[UUserID]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[UUserID]"
+                          name="UUserID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Detail]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[Detail]"
+                          length="80"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[Detail]"
+                          name="Detail"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[AbsenceDays]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[AbsenceDays]"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].Columns[AbsenceDays]"
+                          name="AbsenceDays"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[Period]"
+                          dataType="dbDate"
+                          name="Period" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[FromDate]"
+                          dataType="dbDate"
+                          name="FromDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[ToDate]"
+                          dataType="dbDate"
+                          name="ToDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[IspuzID]"
+                          dataType="r8"
+                          name="IspuzID" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          dataType="i4"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[Customer_Key]"
+                          codePage="1255"
+                          dataType="str"
+                          length="142"
+                          name="Customer_Key" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="Description" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[KodHos]"
+                          dataType="i4"
+                          name="KodHos" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[IsUpdateAfterHen]"
+                          dataType="bool"
+                          name="IsUpdateAfterHen" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[IsBlockSaot]"
+                          dataType="bool"
+                          name="IsBlockSaot" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[InsertDate]"
+                          dataType="dbDate"
+                          name="InsertDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[IUserID]"
+                          dataType="i4"
+                          name="IUserID" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[UpdateDate]"
+                          dataType="dbDate"
+                          name="UpdateDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[UUserID]"
+                          dataType="i4"
+                          name="UUserID" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[Detail]"
+                          codePage="1255"
+                          dataType="str"
+                          length="80"
+                          name="Detail" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output].ExternalColumns[AbsenceDays]"
+                          dataType="i4"
+                          name="AbsenceDays" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[Period]"
+                          dataType="dbDate"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[Period]"
+                          name="Period" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[FromDate]"
+                          dataType="dbDate"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[FromDate]"
+                          name="FromDate" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[ToDate]"
+                          dataType="dbDate"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[ToDate]"
+                          name="ToDate" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[IspuzID]"
+                          dataType="r8"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[IspuzID]"
+                          name="IspuzID" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                          name="CustomerID" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[Customer_Key]"
+                          codePage="1255"
+                          dataType="str"
+                          length="142"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[Customer_Key]"
+                          name="Customer_Key" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[Description]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[Description]"
+                          name="Description" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[InsertDate]"
+                          dataType="dbDate"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[InsertDate]"
+                          name="InsertDate" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[IUserID]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[IUserID]"
+                          name="IUserID" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[UpdateDate]"
+                          dataType="dbDate"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[UpdateDate]"
+                          name="UpdateDate" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[UUserID]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[UUserID]"
+                          name="UUserID" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[KodHos]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[KodHos]"
+                          name="KodHos" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[Detail]"
+                          codePage="1255"
+                          dataType="str"
+                          length="80"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[Detail]"
+                          name="Detail" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[AbsenceDays]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[AbsenceDays]"
+                          name="AbsenceDays" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[IsUpdateAfterHen]"
+                          dataType="bool"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[IsUpdateAfterHen]"
+                          name="IsUpdateAfterHen" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[IsBlockSaot]"
+                          dataType="bool"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[IsBlockSaot]"
+                          name="IsBlockSaot" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[BranchCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[BranchCode]"
+                          name="BranchCode" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DWH\DWH_Fact_CustomersAbsence.Paths[OLE DB Source Output]"
+                  endId="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DWH.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{BC8FBE8C-3CA8-421E-B170-7FB09798853D}"
+          DTS:From="Package\DWH\Delete From DW Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\DWH\DWH_Fact_CustomersAbsence" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DWH.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{1AA508D1-B19C-47CB-AC90-D4C5D824F879}"
+          DTS:From="Package\DWH\DWH_Fact_CustomersAbsence"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\DWH\Delete Customer_Key IS NULL &amp; Period &gt; CurrentMonth" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STG"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E1AA3DEC-61A5-40F3-8482-EE6CC91FBF76}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STG">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\STG\STG_Fact_CustomersAbsence"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A277D715-22C4-4727-96D9-9FDD71A85642}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="STG_Fact_CustomersAbsence"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="ODS_Ispuz"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH Dates AS(
+SELECT [DateID]
+      ,[Date]
+      ,[Year]
+      ,[QuarterID]
+      ,[QuarterDesc]
+      ,[MonthID]
+      ,[Month]
+  FROM [MatavDW].[dbo].[DW_DIM_Dates])
+
+
+SELECT D.Date AS Period
+      ,I.[No]
+	   ,CONVERT(VARCHAR, I.[No]) + '_' + CONVERT(VARCHAR,I.[Snif]) AS Customer_Key
+      ,I.[FromDate]
+      ,ISNULL(I.[ToDate],EOMONTH(GETDATE(), 0)) AS ToDate
+	  ,I.[Detail]
+      ,I.[Teur]
+      ,I.[KodHos]
+      ,I.[IspuzID]
+      ,I.[IsUpdateAfterHen]
+      ,I.[IsBlockSaot]
+      ,I.[InsertDate]
+      ,I.[IUserID]
+      ,I.[UpdateDate]
+      ,I.[UUserID]
+      ,I.[Snif]
+	  ,I.[DW_UploadDate]
+	  ,CASE WHEN DATEDIFF(MM,I.[FromDate],ISNULL(I.[ToDate],EOMONTH(GETDATE(), 0)))=0 
+       THEN DATEDIFF(DD,I.[FromDate],ISNULL(I.[ToDate],EOMONTH(GETDATE(), 0)))+1
+       ELSE 
+              CASE WHEN  DATEDIFF(MM,D.Date,I.[FromDate])=0 AND DATEDIFF(MM,D.Date,ISNULL(I.[ToDate],EOMONTH(GETDATE(), 0)))&lt;&gt;0
+                   THEN  DATEDIFF(DD,I.[FromDate],EOMONTH(I.[FromDate], 0))+1
+                   ELSE
+                        CASE WHEN DATEDIFF(MM,D.Date,ISNULL(I.[ToDate],EOMONTH(GETDATE(), 0)))=0
+                        THEN DATEDIFF(DD,D.Date,ISNULL(I.[ToDate],EOMONTH(GETDATE(), 0)))+1
+                        ELSE 
+                             CASE WHEN DATEDIFF(MM,D.Date,I.[FromDate])&lt;&gt;0  AND DATEDIFF(MM,D.Date,ISNULL(I.[ToDate],EOMONTH(GETDATE(), 0)))&lt;&gt;0 AND Date BETWEEN I.[FromDate] AND ISNULL(I.[ToDate],EOMONTH(GETDATE(), 0))
+                              THEN DATEDIFF(DD,D.Date,EOMONTH(D.Date,0))+1
+                              END
+                         END
+              END
+       END AS AbsenceDays
+FROM Dates as D
+Inner Join [MatavOperational].[dbo].[ODS_ispuz] I 
+ON  DATEADD(DD, 1, EOMONTH(I.[FromDate], -1))&lt;= D.Date And D.Date&lt;=DATEADD(DD, 1, EOMONTH(ISNULL(I.[ToDate],EOMONTH(GETDATE(), 0)), -1))
+where Day(Date)=1</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavOperational]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavOperational]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Period]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[Period]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Period]"
+                          name="Period"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[FromDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[FromDate]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[FromDate]"
+                          name="FromDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[ToDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[ToDate]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[ToDate]"
+                          name="ToDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[No]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[No]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[No]"
+                          name="No"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Snif]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[Snif]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Snif]"
+                          name="Snif"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IspuzID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[IspuzID]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IspuzID]"
+                          name="IspuzID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Customer_Key]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[Customer_Key]"
+                          length="142"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Customer_Key]"
+                          name="Customer_Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Teur]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[Teur]"
+                          length="50"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Teur]"
+                          name="Teur"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[KodHos]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[KodHos]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[KodHos]"
+                          name="KodHos"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IsUpdateAfterHen]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[IsUpdateAfterHen]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IsUpdateAfterHen]"
+                          name="IsUpdateAfterHen"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IsBlockSaot]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[IsBlockSaot]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IsBlockSaot]"
+                          name="IsBlockSaot"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Detail]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[Detail]"
+                          length="80"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Detail]"
+                          name="Detail"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[AbsenceDays]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[AbsenceDays]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[AbsenceDays]"
+                          name="AbsenceDays"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[InsertDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[InsertDate]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[InsertDate]"
+                          name="InsertDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IUserID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[IUserID]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IUserID]"
+                          name="IUserID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[UpdateDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[UpdateDate]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[UpdateDate]"
+                          name="UpdateDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[UUserID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[UUserID]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[UUserID]"
+                          name="UUserID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[Period]"
+                          dataType="dbDate"
+                          name="Period" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[FromDate]"
+                          dataType="dbDate"
+                          name="FromDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[ToDate]"
+                          dataType="dbDate"
+                          name="ToDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[No]"
+                          dataType="i4"
+                          name="No" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[Snif]"
+                          dataType="i4"
+                          name="Snif" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[IspuzID]"
+                          dataType="r8"
+                          name="IspuzID" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[Customer_Key]"
+                          codePage="1255"
+                          dataType="str"
+                          length="61"
+                          name="Customer_Key" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[Teur]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="Teur" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[KodHos]"
+                          dataType="i4"
+                          name="KodHos" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[IsUpdateAfterHen]"
+                          dataType="bool"
+                          name="IsUpdateAfterHen" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[IsBlockSaot]"
+                          dataType="bool"
+                          name="IsBlockSaot" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[Detail]"
+                          codePage="1255"
+                          dataType="str"
+                          length="80"
+                          name="Detail" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[AbsenceDays]"
+                          dataType="i4"
+                          name="AbsenceDays" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[InsertDate]"
+                          dataType="dbDate"
+                          name="InsertDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[IUserID]"
+                          dataType="i4"
+                          name="IUserID" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[UpdateDate]"
+                          dataType="dbDate"
+                          name="UpdateDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].ExternalColumns[UUserID]"
+                          dataType="i4"
+                          name="UUserID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[Period]"
+                          dataType="dbDate"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[Period]"
+                          name="Period" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[FromDate]"
+                          dataType="dbDate"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[FromDate]"
+                          name="FromDate" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[ToDate]"
+                          dataType="dbDate"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[ToDate]"
+                          name="ToDate" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[No]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[No]"
+                          name="No" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[Snif]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[Snif]"
+                          name="Snif" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[IspuzID]"
+                          dataType="r8"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[IspuzID]"
+                          name="IspuzID" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[Detail]"
+                          codePage="1255"
+                          dataType="str"
+                          length="80"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[Detail]"
+                          name="Detail" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[Teur]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[Teur]"
+                          name="Teur" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[KodHos]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[KodHos]"
+                          name="KodHos" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[IsUpdateAfterHen]"
+                          dataType="bool"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[IsUpdateAfterHen]"
+                          name="IsUpdateAfterHen" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[IsBlockSaot]"
+                          dataType="bool"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[IsBlockSaot]"
+                          name="IsBlockSaot" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[InsertDate]"
+                          dataType="dbDate"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[InsertDate]"
+                          name="InsertDate" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[IUserID]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[IUserID]"
+                          name="IUserID" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[UpdateDate]"
+                          dataType="dbDate"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[UpdateDate]"
+                          name="UpdateDate" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[UUserID]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[UUserID]"
+                          name="UUserID" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[Customer_Key]"
+                          codePage="1255"
+                          dataType="str"
+                          length="61"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[Customer_Key]"
+                          name="Customer_Key" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[DW_UploadDate]"
+                          name="DW_UploadDate" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[AbsenceDays]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[AbsenceDays]"
+                          name="AbsenceDays" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="STG_Fact_CustomersAbsence"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[STG_Fact_CustomersAbsence]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MatavMRR]"
+                      connectionManagerRefId="Package.ConnectionManagers[MatavMRR]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[Period]"
+                          cachedDataType="dbDate"
+                          cachedName="Period"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Period]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Period]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[FromDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FromDate"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[FromDate]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[FromDate]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[ToDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ToDate"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[ToDate]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[ToDate]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[IspuzID]"
+                          cachedDataType="r8"
+                          cachedName="IspuzID"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IspuzID]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IspuzID]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[Customer_Key]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="142"
+                          cachedName="Customer_Key"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Key]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Customer_Key]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[KodHos]"
+                          cachedDataType="i4"
+                          cachedName="KodHos"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[KodHos]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[KodHos]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[IsUpdateAfterHen]"
+                          cachedDataType="bool"
+                          cachedName="IsUpdateAfterHen"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IsUpdateAfterHen]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IsUpdateAfterHen]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[IsBlockSaot]"
+                          cachedDataType="bool"
+                          cachedName="IsBlockSaot"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IsBlockSaot]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IsBlockSaot]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[DW_UploadDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DW_UploadDate"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[DW_UploadDate]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[Detail]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="80"
+                          cachedName="Detail"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Detail]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Detail]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[AbsenceDays]"
+                          cachedDataType="i4"
+                          cachedName="AbsenceDays"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[AbsenceDays]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[AbsenceDays]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[InsertDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InsertDate"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[InsertDate]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[IUserID]"
+                          cachedDataType="i4"
+                          cachedName="IUserID"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IUserID]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[IUserID]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[UpdateDate]"
+                          cachedDataType="dbDate"
+                          cachedName="UpdateDate"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[UpdateDate]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[UpdateDate]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[UUserID]"
+                          cachedDataType="i4"
+                          cachedName="UUserID"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[UUserID]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[UUserID]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[No]"
+                          cachedDataType="i4"
+                          cachedName="No"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[No]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[Snif]"
+                          cachedDataType="i4"
+                          cachedName="Snif"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Snif]" />
+                        <inputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].Columns[Teur]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Teur"
+                          externalMetadataColumnId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output].Columns[Teur]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Period]"
+                          dataType="dbDate"
+                          name="Period" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[FromDate]"
+                          dataType="dbDate"
+                          name="FromDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[ToDate]"
+                          dataType="dbDate"
+                          name="ToDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IspuzID]"
+                          dataType="r8"
+                          name="IspuzID" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Key]"
+                          codePage="1255"
+                          dataType="str"
+                          length="142"
+                          name="Customer_Key" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[KodHos]"
+                          dataType="i4"
+                          name="KodHos" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IsUpdateAfterHen]"
+                          dataType="bool"
+                          name="IsUpdateAfterHen" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IsBlockSaot]"
+                          dataType="bool"
+                          name="IsBlockSaot" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[DW_UploadDate]"
+                          dataType="dbTimeStamp"
+                          name="DW_UploadDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Detail]"
+                          codePage="1255"
+                          dataType="str"
+                          length="80"
+                          name="Detail" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[AbsenceDays]"
+                          dataType="i4"
+                          name="AbsenceDays" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
+                          dataType="dbDate"
+                          name="InsertDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[IUserID]"
+                          dataType="i4"
+                          name="IUserID" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[UpdateDate]"
+                          dataType="dbDate"
+                          name="UpdateDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[UUserID]"
+                          dataType="i4"
+                          name="UUserID" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                          dataType="i4"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[BranchCode]"
+                          dataType="i4"
+                          name="BranchCode" />
+                        <externalMetadataColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="Description" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\STG\STG_Fact_CustomersAbsence.Paths[OLE DB Source Output]"
+                  endId="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\STG\Truncate STG Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D3FAE858-3D3F-4686-95A0-1EEB5F805BE9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate STG Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C9517DA3-5BEF-4DFD-B999-A147D2A9AC34}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.STG_Fact_CustomersAbsence" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\STG.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{DD5354B9-80FF-4511-BA95-3520AD336DF1}"
+          DTS:From="Package\STG\Truncate STG Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\STG\STG_Fact_CustomersAbsence" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{A999D19A-0B6A-4D28-B754-95CE948A70AE}"
+      DTS:From="Package\STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DWH" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="344,42"
+          Id="Package\DWH\Delete Customer_Key IS NULL &amp; Period &gt; CurrentMonth"
+          TopLeft="11,216" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DWH\Delete From DW Table"
+          TopLeft="79.5,8.5" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\DWH\DWH_Fact_CustomersAbsence"
+          TopLeft="63.5,113.5" />
+        <EdgeLayout
+          Id="Package\DWH.PrecedenceConstraints[Constraint]"
+          TopLeft="173.75,50.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DWH.PrecedenceConstraints[Constraint 1]"
+          TopLeft="175,155.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8,60.5"
+              Start="0,0"
+              End="8,53">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.25"
+                    Point2="0,30.25"
+                    Point3="4,30.25" />
+                  <mssgle:LineSegment
+                    End="4,30.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4,30.25"
+                    Point2="8,30.25"
+                    Point3="8,34.25" />
+                  <mssgle:LineSegment
+                    End="8,53" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="358,330"
+          Size="358,373"
+          Id="Package\DWH"
+          TopLeft="322,546.5" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\STG\STG_Fact_CustomersAbsence"
+          TopLeft="43.5,132.5" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\STG\Truncate STG Table"
+          TopLeft="68,17.5" />
+        <EdgeLayout
+          Id="Package\STG.PrecedenceConstraints[Constraint]"
+          TopLeft="153.25,59.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="310,230"
+          Size="310,273"
+          Id="Package\STG"
+          TopLeft="340.5,174.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="498.25,447.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,99"
+              Start="0,0"
+              End="0,91.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,91.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DWH\DWH_Fact_CustomersAbsence">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="218,42"
+          Id="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence"
+          TopLeft="166,71" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence"
+          TopLeft="161,213" />
+        <EdgeLayout
+          Id="Package\DWH\DWH_Fact_CustomersAbsence.Paths[OLE DB Source Output]"
+          TopLeft="272,113">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,100"
+              Start="0,0"
+              End="0,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\DWH_Fact_CustomersAbsence\DW_Fact_CustomersAbsence">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\DWH_Fact_CustomersAbsence\STG_Fact_CustomersAbsence">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\STG\STG_Fact_CustomersAbsence">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="131,42"
+          Id="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz"
+          TopLeft="114,81" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence"
+          TopLeft="66,225" />
+        <EdgeLayout
+          Id="Package\STG\STG_Fact_CustomersAbsence.Paths[OLE DB Source Output]"
+          TopLeft="177.25,123">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,102"
+              Start="0,0"
+              End="0,94.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,94.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\STG_Fact_CustomersAbsence\ODS_Ispuz">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\STG_Fact_CustomersAbsence\STG_Fact_CustomersAbsence">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
